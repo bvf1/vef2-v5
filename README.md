@@ -1,5 +1,21 @@
 # Vefforritun 2, 2022. Verkefni 5: Viðburðakerfis framendi með stöðu
 
+vercel
+
+https://vef2-v5-cylgovwz2-bvf1.vercel.app/
+
+
+
+
+
+
+
+
+
+
+
+
+
 [Kynning á verkefni í tíma](https://youtu.be/).
 
 Verkefni heldur áfram með [verkefni 4](https://github.com/vefforritun/vef2-2022-v4/) og bætir við stöðu gegnum vefþjónusturnar úr [verkefni 3](https://github.com/vefforritun/vef2-2022-v3/).
