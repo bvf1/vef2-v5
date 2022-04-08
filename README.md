@@ -67,7 +67,7 @@ Ef notandi er ekki skráður skal bjóða upp á að skrá sig með `POST` á `/
 Setja skal upp verkefni með `create next app` (CNA) og nota Sass.
 
 Setja skal upp `eslint` gegnum CNA. Engar villur skulu vera til staðar.
-
+    
 ## Hýsing á Vercel
 
 Setja skal upp vefinn á Vercel tengt við GitHub, tengjast skal vefþjónustu, annað hvort gefinni [vefþjónustu fyrir sýnilausn á verkefni 3](https://vef2-20222-v3-synilausn.herokuapp.com/), eða ykkar eigin vefþjónustu úr verkefni 3, gefið að búið sé að bæta við hana að birta skráningar.
