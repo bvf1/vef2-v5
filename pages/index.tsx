@@ -78,7 +78,7 @@ const Home: NextPage = ({ data }:Props) => {
 }
 
 
-export async function getServerSideProps(context: GetStaticPathsContext) {
+export async function getStaticProps(context: GetStaticPathsContext) {
   const url = 'https://vef2-20222-v3-synilausn.herokuapp.com/events';
 
   const res = await fetch(url)
