@@ -2,6 +2,8 @@ import type { GetStaticPathsContext, NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState } from 'react'
+import { Login } from '../components/login/Login'
 import s from '../styles/Home.module.scss'
 
 export type Props = {
@@ -26,6 +28,7 @@ export type EventData = {
 }
 const Home: NextPage = ({ data }:Props) => {
 
+  const [isLoggedIn, setLoginState] = useState(false);
 
   const events = (data && data.items) || [];
   
@@ -71,6 +74,7 @@ const Home: NextPage = ({ data }:Props) => {
       </main>
 
       <footer className={s.footer}>
+      <Login setLoginState={setLoginState} isLoggedIn={isLoggedIn}></Login>
 
       </footer>
     </div>

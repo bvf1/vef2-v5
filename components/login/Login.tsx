@@ -1,13 +1,13 @@
-import { Link } from 'react-router-dom';
 import { Button } from '../button/Button';
 import propTypes from 'prop-types';
 import s from './Login.module.scss';
+import Link from 'next/link';
 
 export function Login({setLoginState, isLoggedIn}) {
 
   if (!isLoggedIn) return (
     <div className={s.login}>
-      <Link className={s.isLoggedIn} to="/login">Innskránining</Link>
+      <Link className={s.isLoggedIn} href="/login">Innskránining</Link>
       <Button 
         onClick={(e) => {setLoginState(true)}} 
         size="small"
