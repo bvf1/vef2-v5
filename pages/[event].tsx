@@ -3,12 +3,11 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Event from "../components/event/Event";
 import s from '../styles/Event.module.scss'
-import Registration from '../components/registration/Registration'
-import Back from '../components/back/Back'
 
 type Props = {
-	data: Array<Object>;
+	data: Event;
   slugId: string;
 }
 
@@ -17,24 +16,34 @@ type isLoggedIn = {
   type: boolean;
 }
 
-export type e = {
-  id: number;
+type Event = {
   name: string;
   event: number;
   description: string;
   registrations: Array<object>;
-
 }
 
-const Event: NextPage = ( data, slugId : Props) => {
-  const isLoggedIn : boolean = true; // change get from context
-  const e = data || [];
+
+const EventPage: NextPage = ( {data, slugId} : Props) => {
+  const loggedin : boolean = true; // change get from context
+
+  console.log("data");
+  console.log(typeof data);
   
-  console.log("data",e);
-  if (e === []) return (
+  //console.log("data",data);
+  if (data === []) return (
     <p className={s.event__empty}>Engin hefur skráð sig á þennan viðburð</p>
   )
 
+  return (
+    <Event
+      title={data.name}
+      description={data.description}
+      registrations={data.registrations}
+      loggedin={loggedin}
+    />
+  )
+/*
   return (
 		<>
 			<Head>
@@ -53,34 +62,31 @@ const Event: NextPage = ( data, slugId : Props) => {
       <Back goTo="/" />
       </section>
 		  </> 
-  );
+  );*/
 }
 
 
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  console.log("here");
   const event = context.params?.event ?? '-'
   //const isLoggedIn = context.
 
 	//const response = await fetch('');
 
-	if (event === '-') return {
-		notFound: true,
-		props: {},
-	}
-
 	const url = `https://vef2-20222-v3-synilausn.herokuapp.com/events/${event}`;
 
   const res = await fetch(url)
 	
-  const json = await res.json()
-	console.log("url", url);
+  const data = await res.json()
 
+  if (data === '-') return {
+		notFound: true,
+		props: {},
+	}
 
 	return {
-		props: { data: json, slugId: event }, 
+		props: { data, slugId: event }, 
 	}
 }
 
-export default Event
+export default EventPage

@@ -1,10 +1,12 @@
-import { Back } from '../back/Back';
-import { Button } from '../button/Button';
-import Field from '../form/Field';
-import { Form } from '../form/Form';
+import { NextPage } from 'next';
+import { Back } from '../components/back/Back';
+import { Button } from '../components/button/Button';
+import Field from '../components/form/Field';
+import { Form } from '../components/form/Form';
 
 
-export function LoginForm() {
+
+const Login: NextPage = ()  => {
   return (
     <>
       <h2>Innskráning</h2>
@@ -21,7 +23,8 @@ export function LoginForm() {
 
         <Button size="large">Innskrá</Button>
       </Form>
-      <Back goTo="/" />
+      <Back goTo='/' />
     </>
   )
 }
+export default Login
