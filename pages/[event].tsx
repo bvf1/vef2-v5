@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Event from "../components/event/Event";
+import Event, { Registration } from "../components/event/Event";
 import s from '../styles/Event.module.scss'
 
 type Props = {
@@ -20,20 +20,19 @@ type Event = {
   name: string;
   event: number;
   description: string;
-  registrations: Array<object>;
+  registrations: Array<Registration>;
 }
 
 
-const EventPage: NextPage = ( {data, slugId} : Props) => {
+const EventPage: NextPage<Props> = ( {data, slugId}) => {
+  console.log("is in event page");
+
+  
   const loggedin : boolean = true; // change get from context
 
   console.log("data");
   console.log(typeof data);
   
-  //console.log("data",data);
-  if (data === []) return (
-    <p className={s.event__empty}>Engin hefur skráð sig á þennan viðburð</p>
-  )
 
   return (
     <Event
@@ -43,32 +42,18 @@ const EventPage: NextPage = ( {data, slugId} : Props) => {
       loggedin={loggedin}
     />
   )
-/*
-  return (
-		<>
-			<Head>
-    		<title>Hello {e.name}  </title>
-			</Head>
-      <section className={s.event}>
-        <div className={s.event__info}>
-          <h2 className={s.event__title}>{e.name}</h2>
-          <p>{e.description}</p>
-        </div>
-        <Registration
-          data={e.registrations} 
-          isLoggedIn={isLoggedIn}
-          eventId={e.id}
-        />
-      <Back goTo="/" />
-      </section>
-		  </> 
-  );*/
 }
 
 
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const event = context.params?.event ?? '-'
+  const event = context.params?.event
+
+
+  if (event === []) return <p className={s.event__empty}>Engin hefur skráð sig á þennan viðburð</p>
+
+
+
   //const isLoggedIn = context.
 
 	//const response = await fetch('');
@@ -78,11 +63,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const res = await fetch(url)
 	
   const data = await res.json()
-
-  if (data === '-') return {
-		notFound: true,
-		props: {},
-	}
 
 	return {
 		props: { data, slugId: event }, 

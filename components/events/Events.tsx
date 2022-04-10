@@ -26,7 +26,8 @@ function Events({ title, events }: Props) {
         {events.map((item: Event, i) => {
           return (
             <li className={s.events__event} key={i}>
-              <Link href={`/${item.id}`} className={s.events__eventLink}>{item.name}</Link>
+              <Link href={`/${item.id}`}>
+                <a className={s.events__eventLink}>{item.name}</a></Link>
               <p className={s.events__eventDescription}>{item.description}</p>
             </li>
           )

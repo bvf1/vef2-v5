@@ -8,14 +8,20 @@ import s from './Event.module.scss';
 type Props = {
   title: String;
   description: String;
-  registrations: Array<Object>;
+  registrations: Array<Registration>;
   loggedin: Boolean;
 }
 
+export type Registration = {
+  name: string;
+  comment: string;
+}
+
 function Event({ title, description, registrations, loggedin }: Props) {
+  console.log("in Event component");
   const [registered, setRegistered] = useState(false);
 
-  const onRegister = (e) => {
+  const onRegister = (e:any) => {
     e.preventDefault();
     setRegistered(true);
   }

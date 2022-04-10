@@ -1,8 +1,14 @@
 
-import { Link } from 'react-router-dom';
+import { ReactChild, ReactChildren } from 'react';
 import s from './Layout.module.scss';
 
-export function Layout({ title, children, footer }) {
+type Props = {
+  title: string;
+  children: ReactChild;
+  footer: JSX.Element;
+}
+
+export function Layout({ title, children, footer }: Props) {
   return (
     <div className={s.layout}>
       <header className={s.layout__header}>

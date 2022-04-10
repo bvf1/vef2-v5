@@ -4,8 +4,7 @@ import Events from '../components/events/Events'
 import s from '../styles/Home.module.scss'
 
 export type Props = {
-  data: object;
-  items: Array<Event>
+  data: Array<items>;
 }
 
 export type events = {
@@ -13,8 +12,13 @@ export type events = {
   content: Array<Event>;
 }
 
-const Home: NextPage = ({ data }:Props) => {
+type items = {
+  item: Array<Event>
+}
 
+const Home: NextPage<Props> = ({ data }) => {
+    console.log(data);
+    const 
     return (
     <div className={s.container}>
       <Head>
