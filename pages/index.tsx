@@ -18,7 +18,6 @@ type items = {
 
 const Home: NextPage<Props> = ({ data }) => {
     console.log(data);
-    const 
     return (
     <div className={s.container}>
       <Head>
