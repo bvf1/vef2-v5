@@ -4,7 +4,7 @@ import Events from '../components/events/Events'
 import s from '../styles/Home.module.scss'
 
 export type Props = {
-  data: Array<items>;
+  items: any;
 }
 
 export type events = {
@@ -12,18 +12,18 @@ export type events = {
   content: Array<Event>;
 }
 
-type items = {
-  item: Array<Event>
+type item = {
+  item: Object;
 }
 
-const Home: NextPage<Props> = ({ data }) => {
-    console.log(data);
-    return (
+const Home: NextPage<Props> = ({ items }) => {
+  console.log(items);
+  return (
     <div className={s.container}>
       <Head>
         <title>Atburðarsíða</title>
       </Head>
-      <Events title="Viðburðir á næstunni" events={data.items} />
+      <Events title="Viðburðir á næstunni" items={items} />
 
     </div>
   )
@@ -44,7 +44,7 @@ export async function getStaticProps(context: GetStaticPathsContext) {
 
   const items = data.items
   return {
-    props: { data }, // will be passed to the page component as props
+    props: { items }, // will be passed to the page component as props
   }
 }
 

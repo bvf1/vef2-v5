@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 
 export function Login({
@@ -20,7 +21,7 @@ export function Login({
   return (
     <>
       <p>
-        <a href="/login">Innskráning</a>
+        <Link href="/login">Innskráning</Link>
       </p>
       <p>
         <button onClick={onRegister}>Nýskráning</button>

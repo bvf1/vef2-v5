@@ -4,7 +4,7 @@ import s from './Events.module.scss';
 
 type Props = {
   title:string;
-  events:Array<Event>;
+  items:Array<Event>;
 }
 type Event = {
   id: 'number';
@@ -14,8 +14,9 @@ type Event = {
 }
 
 
-function Events({ title, events }: Props) {
+function Events({ title, items }: Props) {
 
+  const events:Array<Event> = items;
   console.log("here");
   console.log(events);
 
